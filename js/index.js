@@ -151,8 +151,8 @@ function placeImages(imageURLs) {
 
 function launchConfetti() {
   confetti({
-    particleCount: 200,
-    spread: 70,
+    particleCount: 3000,
+    spread: 100,
     origin: { y: 0.6, x: 0.5 },
     colors: [
       "#ff0000",
@@ -166,6 +166,6 @@ function launchConfetti() {
   });
 }
 
-function closePopup() {
-  document.getElementById("ppm_container").style.display = "none";
-}
+// function closePopup() {
+//   document.getElementById("ppm_container").style.display = "none";
+// }
