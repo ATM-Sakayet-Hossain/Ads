@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.ppm_container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.ppm_container_inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.product-cap {
+  top: 50%;
+  left: 120px;
+  width: 120px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.product-ball {
+  top: 50%;
+  left: 120px;
+  width: 120px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+.gift-box {
+  position: relative;
+  width: 220px;
+  height: 160px;
+  margin: 0 auto;
+  opacity: 0;
+  scale: 0.8;
+  perspective: 800px;
+}
+.box-body {
+  width: 100%;
+  height: 100%;
+  background: #d60000;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+.box-lid {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #a00000;
+  border-radius: 10px 10px 0 0;
+  transform-origin: bottom center;
+}
+.box-bowtie {
+  width: 30px;
+  height: 30px;
+  background: #ffcc00;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.product-item {
+  position: absolute;
+  opacity: 0;
+  transform: scale(0.5);
+}
+.product-cola {
+  right: -140px;
+  top: -160px;
+  width: 100px;
+}
+.product-fridge {
+  right: -140px;
+  top: 20px;
+  width: 100px;
+  /* transform: rotate(180px); */
+}
+.product-tv {
+  left: -170px;
+  top: -150px;
+  width: 140px;
+}
+.product-mobile {
+  left: -140px;
+  top: 10px;
+  width: 70px;
+}
+.product-copy {
+  right: 0;
+  top: -150px;
+  width: 220px;
+}
+
+.ppm_closeBtn_takeover {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.ppm_logo_linear {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 100px;
+  opacity: 0.8;
+}
