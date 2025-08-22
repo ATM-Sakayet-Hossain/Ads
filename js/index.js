@@ -64,11 +64,8 @@ function giftBoxAnimation() {
   const box = document.querySelector(".gift-box");
   const lid = document.querySelector(".box-lid");
   const items = document.querySelectorAll(".product-item");
-  const fridge = document.querySelectorAll(".product-fridge");
-  const cola = document.querySelectorAll(".product-cola");
-  const mobile = document.querySelectorAll(".product-mobile");
-  const tv = document.querySelectorAll(".product-tv");
 
+  // Animate gift box and lid
   gsap.to(box, { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" });
   gsap.to(lid, {
     rotateX: 120,
@@ -76,49 +73,80 @@ function giftBoxAnimation() {
     delay: 1,
     transformOrigin: "bottom center",
     ease: "power2.out",
+    onComplete: () => {
+      // After lid opens → start rotation + items pop out
+      startCircleSpin();
+      gsap.to(items, {
+        opacity: 1,
+        scale: 1,
+        y: -40,
+        duration: 0.8,
+        stagger: 0.25,
+        ease: "back.out(1.7)",
+        onComplete: () => launchConfetti(),
+      });
+    },
   });
-  gsap.to(fridge, {
-    x: 0,
-    y: 0,
-    scale: 0,
-    rotate: 6,
-    duration: 0.5,
-    ease: "power1.inOut",
-  });
-  gsap.to(cola, {
-    x: 0,
-    y: 0,
-    scale: 0,
-    rotate: 5,
-    duration: 0.5,
-    ease: "power1.inOut",
-  });
-  gsap.to(mobile, {
-    x: 0,
-    y: 0,
-    scale: 0,
-    rotate: -3,
-    duration: 0.5,
-    ease: "power1.inOut",
-  });
-  gsap.to(tv, {
-    x: 0,
-    y: 0,
-    scale: 0,
-    rotate: 6,
-    duration: 0.5,
-    ease: "power1.inOut",
-  });
-  gsap.to(items, {
-    opacity: 1,
-    scale: 1,
-    y: -40,
-    duration: 0.8,
-    delay: 1.2,
-    stagger: 0.25,
-    ease: "back.out(1.7)",
-    onComplete: () => launchConfetti(),
-  });
+}
+
+// Circle spin setup
+const circle = document.querySelector(".main-circle"),
+  imageURLs = [
+    "../image/product-1.png",
+    "../image/product-2.png",
+    "../image/product-3.png",
+    "../image/product-4.png",
+    "../image/product-5.png",
+    "../image/product-1.png",
+    "../image/product-2.png",
+    "../image/product-3.png",
+    "../image/product-4.png",
+    "../image/product-5.png",
+  ];
+
+let spin; // timeline reference
+
+function startCircleSpin() {
+  const images = placeImages(imageURLs);
+
+  // only build timeline once
+  if (!spin) {
+    spin = gsap
+      .timeline({ repeat: -1, defaults: { duration: 50, ease: "none" } })
+      .to(circle, { rotation: 360 })
+      .to(images, { rotation: -360 }, 0);
+  }
+}
+
+// helper function
+function placeImages(imageURLs) {
+  let angleIncrement = (Math.PI * 2) / imageURLs.length,
+    radius = circle.offsetWidth / 2,
+    images = [],
+    image,
+    angle,
+    i;
+
+  for (i = 0; i < imageURLs.length; i++) {
+    image = new Image();
+    images.push(image);
+    circle.appendChild(image);
+    angle = angleIncrement * i;
+    gsap.set(image, {
+      attr: { src: imageURLs[i] },
+      position: "absolute",
+      top: 0,
+      left: 0,
+      xPercent: -50,
+      yPercent: -50,
+      transformOrigin: "50% 50%",
+      x: radius + Math.cos(angle) * radius,
+      y: radius + Math.sin(angle) * radius,
+      width: 140,
+      borderRadius: "50%",
+    });
+  }
+  return images;
 }
 
 function launchConfetti() {
