@@ -152,7 +152,7 @@ function placeImages(imageURLs) {
 function launchConfetti() {
   confetti({
     particleCount: 3000,
-    spread: 100,
+    spread: 70,
     origin: { y: 0.6, x: 0.5 },
     colors: [
       "#ff0000",
