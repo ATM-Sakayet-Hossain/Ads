@@ -63,6 +63,7 @@ function giftBoxAnimation() {
   const box = document.querySelector(".gift-box");
   const lid = document.querySelector(".box-lid");
   const items = document.querySelectorAll(".product-item");
+  const solaiman = document.querySelectorAll(".solaiman-lipi");
 
   // Animate gift box and lid
   gsap.to(box, { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)" });
@@ -82,6 +83,26 @@ function giftBoxAnimation() {
         stagger: 0.25,
         ease: "back.out(1.7)",
         onComplete: () => launchConfetti(),
+      });
+    },
+  });
+  gsap.to(solaiman, {
+    opacity: 0,
+    scale: 1,
+    y: -20,
+    delay: 0,
+    stagger: 0,
+    ease: "back.out(1.7)",
+    onComplete: () => {
+      startCircleSpin();
+      gsap.to(solaiman, {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.8,
+
+        stagger: 0.25,
+        ease: "back.out(1.7)",
       });
     },
   });
@@ -170,6 +191,6 @@ function launchConfetti() {
   });
 }
 
-function closePopup() {
-  document.getElementById("ppm_container").style.display = "none";
-}
+// function closePopup() {
+//   document.getElementById("ppm_container").style.display = "none";
+// }

@@ -131,4 +131,17 @@ body {
   cursor: pointer;
   z-index: 999;
 }
+
+.solaiman-lipi {
+  font-family: 'SolaimanLipi', Arial, sans-serif;
+  font-size: 27px;
+  right: 0;
+  top: 10px;
+  width: 220px;
+  padding: 50px 20px;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  z-index: -999;
+}
  
