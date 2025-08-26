@@ -1,7 +1,6 @@
-// JavaScript for Product Popup Animation
 window.onload = () => {
   capAnimation();
-  setTimeout(closePopup, 30000); // Auto-close after 30 seconds
+  setTimeout(closePopup, 30000);
 };
 
 function capAnimation() {
@@ -74,7 +73,6 @@ function giftBoxAnimation() {
     transformOrigin: "bottom center",
     ease: "power2.out",
     onComplete: () => {
-      // After lid opens → start rotation + items pop out
       startCircleSpin();
       gsap.to(items, {
         opacity: 1,
@@ -89,7 +87,7 @@ function giftBoxAnimation() {
   });
 }
 
-// Circle spin setup
+//circle animation
 const circle = document.querySelector(".main-circle"),
   imageURLs = [
     "../image/product-1.png",
@@ -104,12 +102,11 @@ const circle = document.querySelector(".main-circle"),
     "../image/product-5.png",
   ];
 
-let spin; // timeline reference
+let spin;
 
 function startCircleSpin() {
   const images = placeImages(imageURLs);
 
-  // only build timeline once
   if (!spin) {
     spin = gsap
       .timeline({ repeat: -1, defaults: { duration: 50, ease: "none" } })
@@ -118,7 +115,6 @@ function startCircleSpin() {
   }
 }
 
-// helper function
 function placeImages(imageURLs) {
   let angleIncrement = (Math.PI * 2) / imageURLs.length,
     radius = circle.offsetWidth / 2,
@@ -144,7 +140,15 @@ function placeImages(imageURLs) {
       y: radius + Math.sin(angle) * radius,
       width: 140,
       borderRadius: "50%",
+      pointerEvents: "auto",
     });
+    image.style.cursor = "pointer";
+    (function (img) {
+      img.addEventListener("click", function (e) {
+        window.open("https://www.teashop.com.bd/", "_blank");
+        e.stopPropagation();
+      });
+    })(image);
   }
   return images;
 }
@@ -166,6 +170,6 @@ function launchConfetti() {
   });
 }
 
-// function closePopup() {
-//   document.getElementById("ppm_container").style.display = "none";
-// }
+function closePopup() {
+  document.getElementById("ppm_container").style.display = "none";
+}

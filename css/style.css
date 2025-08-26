@@ -80,28 +80,8 @@ body {
   opacity: 0;
   transform: scale(0.5);
 }
-.product-cola {
-  right: -140px;
-  top: -160px;
-  width: 100px;
-}
-.product-fridge {
-  right: -140px;
-  top: 20px;
-  width: 100px;
-  /* transform: rotate(180px); */
-}
-.product-tv {
-  left: -170px;
-  top: -150px;
-  width: 140px;
-}
-.product-mobile {
-  left: -140px;
-  top: 10px;
-  width: 70px;
-}
-.product-copy {
+/* tea shop */
+.tea-shop {
   right: 0;
   top: -60px;
   width: 220px;
@@ -114,17 +94,7 @@ body {
   width: 32px;
   height: 32px;
   cursor: pointer;
-  z-index: 999;
 }
-
-.ppm_logo_linear {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  width: 100px;
-  opacity: 0.8;
-}
-
 
 /* Rotate Animation part */
 
@@ -135,8 +105,7 @@ body {
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  pointer-events: none; /* যাতে click block না হয় */
-  /* z-index: -1; */
+  pointer-events: none;
 }
 
 .main-circle {
@@ -144,5 +113,22 @@ body {
   height: 100%;
   border-radius: 50%;
   position: relative;
-  /* z-index: -1; */
 }
+
+.ppm_header {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+.ppm_logo {
+  width: 50px;
+}
+.ppm_logo {
+  position: absolute;
+  right: 60px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 999;
+}
+ 
